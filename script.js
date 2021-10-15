@@ -15,15 +15,15 @@ function update(data) {
         console.log('Failed to fetch weather data');
         return;
     }
-    updateTemp(Math.round(data.main.temp * 10) / 10);
-    updateTempHigh(Math.round(data.main.temp_max * 10) / 10);
-    updateTempLow(Math.round(data.main.temp_min * 10) / 10);
-    updateTempFeels(Math.round(data.main.feels_like * 10) / 10);
+    updateTemp(round(data.main.temp));
+    updateTempHigh(round(data.main.temp_max));
+    updateTempLow(round(data.main.temp_min));
+    updateTempFeels(round(data.main.feels_like));
     updateLocationCity(data.name);
     updateLocationCountry(data.sys.country);
     updateCloudText(data.weather[0].description);
     updateCloudIcon(data.weather[0].icon);
-    updateWindSpeed(Math.round(data.wind.speed * 10) / 10);
+    updateWindSpeed(round(data.wind.speed));
     updateHumidity(data.main.humidity);
     updatePressure(data.main.pressure);
 }
@@ -72,6 +72,10 @@ function updateHumidity(humidity) {
 
 function updatePressure(pressure) {
     document.getElementById('info-pressure').textContent = pressure;
+}
+
+function round(num) {
+    return Math.round(num * 10) / 10;
 }
 
 function handleEnter() {
