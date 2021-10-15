@@ -3,7 +3,7 @@ let unit = 'C';
 
 
 function fetchWeatherData(city) {
-    fetch('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=761a138e4e3ff0894d5d412bd9085bd2&units=' + units)
+    fetch('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=761a138e4e3ff0894d5d412bd9085bd2&units=' + units, { mode: "cors" })
         .then(response => response.json())
         .then(data => update(data))
         .catch(err => console.log(err));
