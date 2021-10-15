@@ -79,7 +79,10 @@ function handleEnter() {
     input.addEventListener("keydown", function (event) {
         if (event.key === 'Enter') {
             event.preventDefault();
-            fetchWeatherData(input.value);
+            if (input.value.length > 0) {
+                fetchWeatherData(input.value);
+                input.value = "";
+            }
         }
     });
 }
