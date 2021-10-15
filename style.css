@@ -11,14 +11,13 @@ html,body {
     background: rgba(224,244,255,1);
     background: linear-gradient(0deg, var(--background-first) 0%, var(--background-second) 100%);
     font-family: 'Play', sans-serif;
-    padding: 0;
 }
 
 #content {
     width: 100vw;
     height: 100vh;
-    min-width: 400px;
-    min-height: 500px;
+    min-width: 430px;
+    min-height: 530px;
     display: flex;
     align-items: center;
     justify-content: center;
