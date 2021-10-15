@@ -59,7 +59,7 @@ function updateCloudText(text) {
 }
 
 function updateCloudIcon(icon) {
-    document.getElementById('cloud-icon').src = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+    document.getElementById('cloud-icon').src = `https://openweathermap.org/img/wn/${icon}@2x.png`;
 }
 
 function updateWindSpeed(speed) {
