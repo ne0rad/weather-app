@@ -1,11 +1,23 @@
 let units = 'metric';
 let unit = 'C';
 
+let temp_main = document.getElementById('temp-main');
+let temp_high = document.getElementById('temp-high');
+let temp_low = document.getElementById('temp-low');
+let temp_feels = document.getElementById('temp-feels');
+let location_city = document.getElementById('location-city');
+let location_country = document.getElementById('location-country');
+let cloud_text = document.getElementById('cloud-text');
+let cloud_icon = document.getElementById('cloud-icon');
+let info_wind = document.getElementById('info-wind');
+let info_humidity = document.getElementById('info-humidity');
+let info_pressure = document.getElementById('info-pressure');
+
 
 function fetchWeatherData(city) {
-    fetch('https://api.openweathermap.org/data/2.5/weather?q=' 
-    + city + '&appid=761a138e4e3ff0894d5d412bd9085bd2&units=' 
-    + units, { mode: "cors" })
+    fetch('https://api.openweathermap.org/data/2.5/weather?q='
+        + city + '&appid=761a138e4e3ff0894d5d412bd9085bd2&units='
+        + units, { mode: "cors" })
         .then(response => response.json())
         .then(data => update(data))
         .catch(err => console.log(err));
@@ -14,7 +26,7 @@ function fetchWeatherData(city) {
 
 function update(data) {
     if (data.cod !== 200) {
-        console.log('Failed to fetch weather data');
+        setNotFound();
         return;
     }
     updateTemp(round(data.main.temp));
@@ -31,49 +43,51 @@ function update(data) {
 }
 
 function updateTemp(temp) {
-    document.getElementById('temp-main').textContent = temp + "°" + unit;
+    temp_main.textContent = temp + "°" + unit;
 }
 
 function updateTempHigh(temp) {
-    document.getElementById('temp-high').textContent = temp + "°";
+    temp_high.textContent = temp + "°";
 }
 
 function updateTempLow(temp) {
-    document.getElementById('temp-low').textContent = temp + "°";
+    temp_low.textContent = temp + "°";
 }
 
 function updateTempFeels(temp) {
-    document.getElementById('temp-feels').textContent = temp + "°";
+    temp_feels.textContent = temp + "°";
 }
 
 function updateLocationCity(city) {
-    document.getElementById('location-city').textContent = city;
+    location_city.textContent = city;
 }
 
 function updateLocationCountry(country) {
-    document.getElementById('location-country').textContent = country;
+    if (country)
+        location_country.textContent = ", " + country;
+    else location_country.textContent = "";
 }
 
 function updateCloudText(text) {
     // Capitalize first letter
     text = text.charAt(0).toUpperCase() + text.slice(1);
-    document.getElementById('cloud-text').textContent = text;
+    cloud_text.textContent = text;
 }
 
 function updateCloudIcon(icon) {
-    document.getElementById('cloud-icon').src = `https://openweathermap.org/img/wn/${icon}@2x.png`;
+    cloud_icon.src = `https://openweathermap.org/img/wn/${icon}@2x.png`;
 }
 
 function updateWindSpeed(speed) {
-    document.getElementById('info-wind').textContent = speed + " m/s";
+    info_wind.textContent = speed + " m/s";
 }
 
 function updateHumidity(humidity) {
-    document.getElementById('info-humidity').textContent = humidity;
+    info_humidity.textContent = humidity + "%";
 }
 
 function updatePressure(pressure) {
-    document.getElementById('info-pressure').textContent = pressure;
+    info_pressure.textContent = pressure + "mb";
 }
 
 function round(num) {
@@ -84,6 +98,7 @@ function updateWeather() {
     let input = document.getElementById("search-input");
     if (input.value.length > 0) {
         fetchWeatherData(input.value);
+        setLoading();
         input.value = "";
         input.blur();
     }
@@ -95,7 +110,7 @@ function handleEnter() {
         if (event.key === 'Enter') {
             // remove focus to trigger event
             input.blur();
-            }
+        }
     });
 }
 
@@ -104,9 +119,28 @@ function handleFocusLost() {
     input.addEventListener("focusout", () => updateWeather());
 }
 
+function setLoading() {
+    location_city.textContent = "Loading";
+    location_country.textContent = "...";
+    temp_main.textContent = "...";
+    temp_high.textContent = "...";
+    temp_low.textContent = "...";
+    temp_feels.textContent = "...";
+    cloud_text.textContent = "...";
+    info_wind.textContent = "...";
+    info_humidity.textContent = "...";
+    info_pressure.textContent = "...";
+}
+
+function setNotFound() {
+    location_city.textContent = "Not Found";
+    location_country.textContent = "";
+}
+
 function initLoad() {
     handleEnter();
     handleFocusLost();
+    setLoading();
     fetchWeatherData("London");
 }
 

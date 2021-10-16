@@ -118,7 +118,7 @@ html,body {
     font-weight: bold;
     margin: 5px 3px 5px 3px;
     color: white;
-    text-shadow: 0 0 5px black;
+    text-shadow: 0 0 8px black;
 }
 
 .text-sup {
@@ -142,7 +142,7 @@ html,body {
 .text-info {
     font-size: 24px;
     color: white;
-    text-shadow: 0 0 4px black;
+    text-shadow: 0 0 5px black;
     margin: 5px;
     font-weight: bold;
 }
