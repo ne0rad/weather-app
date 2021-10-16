@@ -3,7 +3,9 @@ let unit = 'C';
 
 
 function fetchWeatherData(city) {
-    fetch('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=761a138e4e3ff0894d5d412bd9085bd2&units=' + units, { mode: "cors" })
+    fetch('https://api.openweathermap.org/data/2.5/weather?q=' 
+    + city + '&appid=761a138e4e3ff0894d5d412bd9085bd2&units=' 
+    + units, { mode: "cors" })
         .then(response => response.json())
         .then(data => update(data))
         .catch(err => console.log(err));
@@ -33,15 +35,15 @@ function updateTemp(temp) {
 }
 
 function updateTempHigh(temp) {
-    document.getElementById('temp-high').textContent = temp + "°" + unit;
+    document.getElementById('temp-high').textContent = temp + "°";
 }
 
 function updateTempLow(temp) {
-    document.getElementById('temp-low').textContent = temp + "°" + unit;
+    document.getElementById('temp-low').textContent = temp + "°";
 }
 
 function updateTempFeels(temp) {
-    document.getElementById('temp-feels').textContent = temp + "°" + unit;
+    document.getElementById('temp-feels').textContent = temp + "°";
 }
 
 function updateLocationCity(city) {
