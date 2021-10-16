@@ -78,21 +78,33 @@ function round(num) {
     return Math.round(num * 10) / 10;
 }
 
+function updateWeather() {
+    let input = document.getElementById("search-input");
+    if (input.value.length > 0) {
+        fetchWeatherData(input.value);
+        input.value = "";
+        input.blur();
+    }
+}
+
 function handleEnter() {
     let input = document.getElementById("search-input");
     input.addEventListener("keydown", function (event) {
         if (event.key === 'Enter') {
-            event.preventDefault();
-            if (input.value.length > 0) {
-                fetchWeatherData(input.value);
-                input.value = "";
+            // remove focus to trigger event
+            input.blur();
             }
-        }
     });
+}
+
+function handleFocusLost() {
+    let input = document.getElementById("search-input");
+    input.addEventListener("focusout", () => updateWeather());
 }
 
 function initLoad() {
     handleEnter();
+    handleFocusLost();
     fetchWeatherData("London");
 }
 
