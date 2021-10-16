@@ -1,5 +1,6 @@
 let units = 'metric';
 let unit = 'C';
+let loading = false;
 
 let temp_main = document.getElementById('temp-main');
 let temp_high = document.getElementById('temp-high');
@@ -25,6 +26,7 @@ function fetchWeatherData(city) {
 
 
 function update(data) {
+    loading = false;
     if (data.cod !== 200) {
         setNotFound();
         return;
@@ -103,7 +105,7 @@ function round(num) {
 
 function updateWeather() {
     let input = document.getElementById("search-input");
-    if (input.value.length > 0) {
+    if (input.value.length > 0 && !loading) {
         fetchWeatherData(input.value);
         setLoading();
         input.value = "";
@@ -127,6 +129,7 @@ function handleFocusLost() {
 }
 
 function setLoading() {
+    loading = true;
     location_city.textContent = "Loading";
     location_country.textContent = "...";
     temp_main.textContent = "...";
