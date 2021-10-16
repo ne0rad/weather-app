@@ -139,6 +139,10 @@ html,body {
     text-shadow: 0 0 8px black;
 }
 
+.text-location-small {
+    font-size: 22px;
+}
+
 .text-info {
     font-size: 24px;
     color: white;

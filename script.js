@@ -59,6 +59,13 @@ function updateTempFeels(temp) {
 }
 
 function updateLocationCity(city) {
+    if(city.length > 18) {
+        location_city.classList.add('text-location-small');
+        location_country.classList.add('text-location-small');
+    } else {
+        location_city.classList.remove('text-location-small');
+        location_country.classList.remove('text-location-small');
+    }
     location_city.textContent = city;
 }
 
