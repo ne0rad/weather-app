@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 
 :root {
     --background-first: #b1cbda;
@@ -10,14 +10,14 @@ html,body {
     padding: 0;
     background: rgba(224,244,255,1);
     background: linear-gradient(0deg, var(--background-first) 0%, var(--background-second) 100%);
-    font-family: 'Play', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 #content {
     width: 100vw;
     height: 100vh;
-    min-width: 430px;
-    min-height: 530px;
+    min-width: 410px;
+    min-height: 430px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -29,8 +29,8 @@ html,body {
     align-items: center;
     justify-content: space-around;
     flex-direction: column;
-    width: 400px;
-    height: 420px;
+    width: 380px;
+    height: 400px;
     background: rgba(78,225,255,1);
     background: linear-gradient(0deg, var(--background-second) 0%, var(--background-first) 100%);
     border-radius: 15px;
@@ -41,11 +41,11 @@ html,body {
 }
 
 #temperature {
-    width: 180px;
+    width: 170px;
 }
 
 #clouds {
-    width: 150px;
+    width: 140px;
 }
 
 #clouds img {
@@ -55,15 +55,15 @@ html,body {
 }
 
 #location {
-    width: 360px;
-    height: 80px;
+    width: 340px;
+    height: 60px;
 }
 
 #search-input {
-    width: 360px;
+    width: 340px;
     height: 40px;
     background: transparent;
-    font-family: 'Play', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     font-size: 30px;
     border: none;
     border-bottom: 1px solid black;
@@ -98,8 +98,8 @@ html,body {
     align-items: center;
     justify-content: space-around;
     background-color: #1e83c7;
-    height: 80px;
-    width: 360px;
+    height: 70px;
+    width: 340px;
     border-radius: 10px;
     box-shadow: inset 0 0 3px 1px black;
     padding: 5px;
